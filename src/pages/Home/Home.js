@@ -11,7 +11,9 @@ class Home extends Component {
 
   render() {
     return (
-      <Jumbotron />
+      <Jumbotron>
+        <h1>Welcome to Project Recruit</h1>
+      </Jumbotron>
     );
   }
 }

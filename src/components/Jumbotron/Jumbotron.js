@@ -1,11 +1,11 @@
 import React from "react";
 
-const Jumbotron = () => (
+const Jumbotron = ({ children }) => (
   <div
     style={{ height: 75, backgroundColor: "#14c5e5", paddingTop: 8, textAlign: "center", color: "white"}}
     className="jumbotron"
   >
-    <h1>Welcome to Project Recruit</h1>
+    {children}
   </div>
 );
 
