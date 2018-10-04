@@ -49,34 +49,13 @@ class Projects extends Component {
         </Row>
         <Row>
         {this.state.projects.map(project => (
-            <Thumbnail         
-              id={project.id}
-              key={project.id}
-              projectName={project.projectName}
-              projectImage={project.projectImage}
-            />
+          <Thumbnail         
+            id={project.id}
+            key={project.id}
+            projectName={project.projectName}
+            projectImage={project.projectImage}
+          />
         ))};            
-          
-          {/* <Col size="md-4">
-          {this.state.projects.map(project => (
-            <Thumbnail         
-              id={project.id}
-              key={project.id}
-              projectName={project.projectName}
-              projectImage={project.projectImage}
-            />
-          ))};            
-          </Col>
-          <Col size="md-4">
-          {this.state.projects.map(project => (
-            <Thumbnail         
-              id={project.id}
-              key={project.id}
-              projectName={project.projectName}
-              projectImage={project.projectImage}
-            />
-          ))};            
-          </Col> */}
         </Row>
       </Container>
     );

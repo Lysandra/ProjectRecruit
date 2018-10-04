@@ -6,8 +6,8 @@
   position: relative;
   width: 275px;
   box-shadow: 0 6px 12px #999, 0 3px 6px #999;
-  text-align: left;
   display: inline-block;
+  align-content: center;
 }
 
 .thumbnail > .thumbnail-container {
@@ -31,3 +31,11 @@ p {
   text-align: center;
   color: #2e91a3;
 }
+
+/* div.thumbnail {
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  width: 100%;
+  padding-top: 100%;
+} */
