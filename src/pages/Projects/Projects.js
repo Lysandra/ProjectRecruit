@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import { Col, Row, Container } from "../../components/Grid";
-import Jumbotron from "../../components/Jumbotron";
+import JumbotronLeft from "../../components/JumbotronLeft";
 import API from "../../utils/API";
 import "./Projects.css";
 import Thumbnail from "../../components/Thumbnail";
@@ -32,9 +32,9 @@ class Projects extends Component {
       <Container fluid>
         <Row>
           <Col size="size=md-6 sm-12">
-          <Jumbotron>
+          <JumbotronLeft>
               <h1>Trilogy Demo Day</h1>
-          </Jumbotron>     
+          </JumbotronLeft>     
           </Col>
         </Row>
         <Row>
