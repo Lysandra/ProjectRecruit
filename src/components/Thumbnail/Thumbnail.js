@@ -1,16 +1,6 @@
 import React from "react";
 import "./Thumbnail.css";
 
-
-// const Thumbnail = ({ children }) => (
-//   <img src="/img/thumbnail.png" circle alt="242x200" 
-//     style={{ height: 75, paddingTop: 8, textAlign: "center" }}
-//     className="thumbnail"
-//   >
-//   {{ children }}
-//   </img>
-// );
-
 const Thumbnail = props => (
   <div className="thumbnail">
     <div className="thumbnail-container">
@@ -26,3 +16,16 @@ const Thumbnail = props => (
 );
 
 export default Thumbnail;
+
+// const Thumbnail = props => (
+//   <div
+//     className="thumbnail"
+//     role="img"
+//     aria-label="Recipe Image"
+//     style={{
+//       backgroundImage: `url(${props.src})`
+//     }}
+//   />
+// );
+
+// export default Thumbnail;
