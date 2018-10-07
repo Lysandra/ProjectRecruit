@@ -10,7 +10,9 @@ import { withUser, update } from './services/withUser';
 import CreateAccountPage from './pages/CreateAccountPage';
 import HomePage from './pages/HomePage';
 import LoginPage from './pages/LoginPage';
-import NotFoundPage from './pages/NotFoundPage';
+import NoMatch from './pages/NoMatch';
+import Candidate from './pages/Candidate';
+import Projects from './pages/Projects';
 
 class App extends Component {
   componentDidMount() {
@@ -43,7 +45,9 @@ class App extends Component {
               <Route exact path="/" component={HomePage} />
               <Route exact path="/login" component={LoginPage} />
               <Route exact path="/create" component={CreateAccountPage} />
-              <Route component={NotFoundPage} />
+              <Route exact path="/candidate" component={Candidate} />
+              <Route exact path="/projects" component={Projects} />
+              <Route component={NoMatch} />
             </Switch>
           </Fragment>
         </MuiThemeProvider>
