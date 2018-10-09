@@ -37,7 +37,7 @@ class HomePage extends Component {
           <div>
             Welcome back, {user.username}!
           <List>
-           {stuff.map((s, i) => <ListItem key={i} primaryText={s} />)}
+            {/* {stuff.map((s, i) => <ListItem key={i} primaryText={s} />)} */}
           </List>
           </div>
         }

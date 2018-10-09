@@ -1,4 +1,5 @@
 module.exports = {
   User: require('./User'),
-  SocialMediaMembership: require('./SocialMediaMembership')
+  SocialMediaMembership: require('./SocialMediaMembership'),
+  Recruiter: require("./recruiter")
 };
