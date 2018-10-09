@@ -3,6 +3,8 @@ import ProjectName from "./components/ProjectName";
 import LogOutBtn from "../../components/LogOutBtn";
 import ProfilePicture from "./components/ProfilePicture";
 import ProfileInfo from "./components/ProfileInfo"
+import ColoredLine from "./components/ColoredLine"
+import ProjectInfo from "./components/ProjectInfo"
 import "./Candidate.css";
 
 // import DeleteBtn from "../../components/DeleteBtn";
@@ -21,7 +23,7 @@ class Candidate extends Component {
         <Row>
           <div className="top-wrapper">
             <ProjectName
-              image="https://secure.i.telegraph.co.uk/multimedia/archive/03600/potd-squirrels_3600130k.jpg"
+              image="https://savcoop.nuntanacloudservice.com/images/news_photo/I0000054.png"
               name="Project Name"
             />
             <LogOutBtn />
@@ -30,24 +32,37 @@ class Candidate extends Component {
         <Row>
           <Col md={{size:3,offset:2}}>
             <ProfilePicture
-              image="https://i.pinimg.com/236x/42/ac/0a/42ac0a917dc7d8e2f85a2827bde97b76--profile-pictures.jpg"     
+              image="https://lh3.googleusercontent.com/-z-h2bK8PjKY/AAAAAAAAAAI/AAAAAAAAYNg/iNq2qBxNnFw/s640-il/photo.jpg"     
             />
           </Col>
-          <Col md="7">
+          <Col md="5">
             <ProfileInfo
               firstName="Cristy"
               lastName="Sillerico"
-              title="Best"
+              title="Full Stack Software Engineer"
               email="cristysillerico@gmail.com"
-              phoneNumber="323232"
-              linkedIn="Cristy Sillerico"
+              phoneNumber="407-717-9056"
+              linkedIn="https://www.linkedin.com/feed/"
             />
           </Col>
-        </Row>     
-        <Row>Bottom</Row>       
+        </Row>   
+        <Row>
+          <Col md="12">
+            <ColoredLine color="rgb(0, 188, 212)" />
+          </Col>
+        </Row>
+        <Row>
+          <Col md={{size:6,offset:3}}>
+            <ProjectInfo
+              projectName="Project Name"             
+              summary="This is the summary of our project. We will go on and on on how great it is and how it will help you in the future."
+              projectLink="Project Link"
+              technologiesUsed="React, ReactStrap, Mongoose"
+            />
+          </Col>
+        </Row>      
       </Container>
     );
   }
 }
-
 export default Candidate;
