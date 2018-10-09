@@ -8,10 +8,10 @@ const ProfileInfo = props => {
         <p>{props.firstName}</p>
         <p>{props.lastName}</p>
       </div>
-      <p>{props.title}</p>
-      <p>{props.email}</p>
-      <p>{props.phoneNumber}</p>
-      <p>{props.linkedIn}</p>
+        <p>{props.title}</p>
+        <p>{props.email}</p>
+        <p>{props.phoneNumber}</p>
+        <p>{props.linkedIn}</p>     
     </div>
   )
 }

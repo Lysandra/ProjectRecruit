@@ -1,10 +1,13 @@
 import React, { Component } from "react";
 import ProjectName from "./components/ProjectName";
 import LogOutBtn from "../../components/LogOutBtn";
+import SaveBtn from "../../components/SaveBtn"
 import ProfilePicture from "./components/ProfilePicture";
-import ProfileInfo from "./components/ProfileInfo"
-import ColoredLine from "./components/ColoredLine"
-import ProjectInfo from "./components/ProjectInfo"
+import ProfileInfo from "./components/ProfileInfo";
+import ColoredLine from "./components/ColoredLine";
+import ProjectInfo from "./components/ProjectInfo";
+
+
 import "./Candidate.css";
 
 // import DeleteBtn from "../../components/DeleteBtn";
@@ -57,10 +60,16 @@ class Candidate extends Component {
               projectName="Project Name"             
               summary="This is the summary of our project. We will go on and on on how great it is and how it will help you in the future."
               projectLink="Project Link"
-              technologiesUsed="React, ReactStrap, Mongoose"
+              technologiesUsed="React | React Native | Node JS| MongoDB"
             />
           </Col>
-        </Row>      
+        </Row> 
+        <Row>
+            <Col md="11">
+              <SaveBtn />
+            </Col>
+        </Row>  
+
       </Container>
     );
   }
