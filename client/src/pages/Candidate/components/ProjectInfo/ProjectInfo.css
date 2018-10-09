@@ -1,0 +1,12 @@
+.project-info-wrap {
+  display: flex;
+  flex-direction: column;
+  align-items: center; 
+  border: 2px solid rgb(0, 188, 212);
+  height: 250px;
+  padding: 20px 10px;
+}
+.projecr-wrapper {
+  display: flex;
+  flex-direction: row;
+}
