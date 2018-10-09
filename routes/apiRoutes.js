@@ -2,6 +2,7 @@ const express = require('express');
 const passport = require('passport');
 const router = express.Router();
 const db = require('../models');
+const recruitersController = require("../controllers/recruitersController");
 const mustBeLoggedIn = require('../shared/middleware/mustBeLoggedIn');
 
 function getCurrentUser(req, res) {
@@ -82,6 +83,9 @@ router.route('/stuff')
     ]);
   });
 
-
+// Matches with "/apiRoutes/recruiters"
+router.route("/recruiters")
+  .get(recruitersController.findAll);
+  console.log("this is working");
+  
 module.exports = router;
-

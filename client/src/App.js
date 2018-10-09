@@ -11,6 +11,8 @@ import CreateAccountPage from './pages/CreateAccountPage';
 import HomePage from './pages/HomePage';
 import LoginPage from './pages/LoginPage';
 import NotFoundPage from './pages/NotFoundPage';
+import Projects from './pages/Projects';
+import Recruiters from './pages/Recruiters';
 
 class App extends Component {
   componentDidMount() {
@@ -39,10 +41,14 @@ class App extends Component {
             <Navbar
               user={user}
             />
+            
             <Switch>
               <Route exact path="/" component={HomePage} />
               <Route exact path="/login" component={LoginPage} />
               <Route exact path="/create" component={CreateAccountPage} />
+              <Route exact path="/create" component={CreateAccountPage} />
+              <Route exact path="/projects" component={Projects} />
+              <Route exact path="/recruiters" component={Recruiters} />
               <Route component={NotFoundPage} />
             </Switch>
           </Fragment>
