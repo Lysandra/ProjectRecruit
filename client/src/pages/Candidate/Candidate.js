@@ -6,6 +6,7 @@ import ProfilePicture from "./components/ProfilePicture";
 import ProfileInfo from "./components/ProfileInfo";
 import ColoredLine from "./components/ColoredLine";
 import ProjectInfo from "./components/ProjectInfo";
+import API from "../../utils/API";
 
 
 import "./Candidate.css";
@@ -20,14 +21,32 @@ import { Col, Row, Container } from "reactstrap";
 
 class Candidate extends Component {
 
+  state = {
+    candidates: [],
+  };
+
+  
+  componentDidMount() {
+    this.loadCandidates();
+  }
+
+  loadCandidates = () => {
+    API.getCandidates()
+      .then((res) => {
+        console.log ("***********" + res.data) 
+        this.setState({ candidates: res.data });
+      })
+      .catch(err => console.log(err));
+  };
+
   render() {
     return (
       <Container>
         <Row>
           <div className="top-wrapper">
             <ProjectName
-              image="https://savcoop.nuntanacloudservice.com/images/news_photo/I0000054.png"
-              name="Project Name"
+              projectImage="https://savcoop.nuntanacloudservice.com/images/news_photo/I0000054.png"
+              projectName="Project Name"
             />
             <LogOutBtn />
           </div>
@@ -35,7 +54,7 @@ class Candidate extends Component {
         <Row>
           <Col md={{size:3,offset:2}}>
             <ProfilePicture
-              image="https://lh3.googleusercontent.com/-z-h2bK8PjKY/AAAAAAAAAAI/AAAAAAAAYNg/iNq2qBxNnFw/s640-il/photo.jpg"     
+              profileImage="https://lh3.googleusercontent.com/-z-h2bK8PjKY/AAAAAAAAAAI/AAAAAAAAYNg/iNq2qBxNnFw/s640-il/photo.jpg"     
             />
           </Col>
           <Col md="5">

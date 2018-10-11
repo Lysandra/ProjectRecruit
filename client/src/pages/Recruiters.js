@@ -15,7 +15,7 @@ class Recruiters extends Component {
   loadRecruiters = () => {
     API.getRecruiters()
       .then((res) => {
-        console.log ("***********" + res.data.typeOf()) 
+        console.log ("***********" + res.data) 
         this.setState({ recruiters: res.data });
       })
       .catch(err => console.log(err));

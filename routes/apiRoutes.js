@@ -3,6 +3,7 @@ const passport = require('passport');
 const router = express.Router();
 const db = require('../models');
 const recruitersController = require("../controllers/recruitersController");
+const candidatesController = require("../controllers/candidatesController");
 const mustBeLoggedIn = require('../shared/middleware/mustBeLoggedIn');
 
 function getCurrentUser(req, res) {
@@ -45,15 +46,32 @@ router.route('/auth')
     });
   });
 
-router.route('/users')
+router.route('/users/candidate')
   // POST to /api/users will create a new user
   .post((req, res, next) => {
-    db.User.create(req.body)
+    db.User.create({
+      username: req.body.username,
+      password: req.body.password
+    })
       .then(user => {
+        console.log(user)
         const { id, username } = user;
-        res.json({
-          id, username
-        });
+        db.Candidate.create({
+          firstName: req.body.firstName,
+          lastName: req.body.lastName,
+          position: req.body.position,
+          email: req.body.email,
+          phone: req.body.phone,
+          linkedIn: req.body.linkedIn,
+          userId: id
+        })
+          .then(candidate => {
+            console.log(candidate)
+            res.json({
+              id, username
+            });
+          })
+        
       })
       .catch(err => {
         // if this error code is thrown, that means the username already exists.
@@ -87,5 +105,8 @@ router.route('/stuff')
 router.route("/recruiters")
   .get(recruitersController.findAll);
   console.log("this is working");
+
+router.route("/candidates")
+  .get(candidatesController.findAll);
   
 module.exports = router;
