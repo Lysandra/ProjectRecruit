@@ -3,6 +3,7 @@ const passport = require('passport');
 const router = express.Router();
 const db = require('../models');
 const recruitersController = require("../controllers/recruitersController");
+const candidatesController = require("../controllers/candidatesController");
 const mustBeLoggedIn = require('../shared/middleware/mustBeLoggedIn');
 
 function getCurrentUser(req, res) {
@@ -87,5 +88,8 @@ router.route('/stuff')
 router.route("/recruiters")
   .get(recruitersController.findAll);
   console.log("this is working");
+
+router.route("/candidates")
+  .get(candidatesController.findAll);
   
 module.exports = router;

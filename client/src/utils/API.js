@@ -3,7 +3,7 @@ import axios from "axios";
 export default {
   // Get all recruiters
   getRecruiters: function() {
-    return axios.get("/recruiters");
+    return axios.get("/api/recruiters");
   },
   
   // Get all projects
@@ -14,5 +14,8 @@ export default {
   // Get project by ID
   getProject: function(id) {
     return axios.get("/projects/" + id);
+    },
+  getCandidates: function() {
+    return axios.get("/api/candidates");
     },
 };
