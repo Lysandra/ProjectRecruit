@@ -8,6 +8,12 @@ class CreateAccountPage extends Component {
   state = {
     username: null,
     password: null,
+    email: null,
+    firstName: null,
+    lastName: null,
+    position: null,
+    phone: null,
+    linkedIn: null,
     error: null
   }
   handleInputChanged = (event) => {
@@ -80,6 +86,60 @@ class CreateAccountPage extends Component {
                   hintText="Password"
                   floatingLabelText="Password"
                   type="password"
+                  onChange={this.handleInputChanged}
+                />
+              </div>
+              <div>
+                <TextField
+                  name="email"
+                  hintText="email"
+                  floatingLabelText="email"
+                  type="email"
+                  onChange={this.handleInputChanged}
+                />
+              </div>
+              <div>
+                <TextField
+                  name="firstName"
+                  hintText="First Name"
+                  floatingLabelText="First Name"
+                  type="firstName"
+                  onChange={this.handleInputChanged}
+                />
+              </div>
+              <div>
+                <TextField
+                  name="lastName"
+                  hintText="Last Name"
+                  floatingLabelText="Last Name"
+                  type="lastName"
+                  onChange={this.handleInputChanged}
+                />
+              </div>
+              <div>
+                <TextField
+                  name="postion"
+                  hintText="Position"
+                  floatingLabelText="Postion"
+                  type="position"
+                  onChange={this.handleInputChanged}
+                />
+              </div>
+              <div>
+                <TextField
+                  name="phone"
+                  hintText="8675309"
+                  floatingLabelText="8675309"
+                  type="phone"
+                  onChange={this.handleInputChanged}
+                />
+              </div>
+              <div>
+                <TextField
+                  name="linkedIn"
+                  hintText="linkedin.com/YourName"
+                  floatingLabelText="linkedin.com/YourName"
+                  type="linkedIn"
                   onChange={this.handleInputChanged}
                 />
               </div>
