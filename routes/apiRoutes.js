@@ -89,6 +89,50 @@ router.route('/users/candidate')
       });
   });
 
+
+router.route('/users/recruiter')
+// POST to /api/users will create a new user
+.post((req, res, next) => {
+  db.User.create({
+    username: req.body.username,
+    password: req.body.password
+  })
+    .then(user => {
+      console.log(user)
+      const { id, username } = user;
+      db.Recruiter.create({
+        first_name: req.body.first_name,
+        last_name: req.body.last_name,
+        email_address: req.body.email_address,
+        company: req.body.company,
+        phone: req.body.phone,
+        website: req.body.website,
+        userId: id
+      })
+        .then(recruiter => {
+          console.log(recruiter)
+          res.json({
+            id, username
+          });
+        })
+      
+    })
+    .catch(err => {
+      // if this error code is thrown, that means the username already exists.
+      // let's handle that nicely by redirecting them back to the create screen
+      // with that flash message
+      if (err.code === 11000) {
+        res.status(400).json({
+          message: 'Username already in use.'
+        })
+      }
+
+      // otherwise, it's some nasty unexpected error, so we'll just send it off to
+      // to the next middleware to handle the error.
+      next(err);
+    });
+});
+
 // this route is just returns an array of strings if the user is logged in
 // to demonstrate that we can ensure a user must be logged in to use a route
 router.route('/stuff')
