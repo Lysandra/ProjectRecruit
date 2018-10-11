@@ -1,31 +1,18 @@
 import React from "react";
 import "./Thumbnail.css";
 
+// The Thumbnail component renders a div that uses some CSS to render a background image
+// It will always keep square proportions at any size without the image warping
+// The "role" and "aria label" are there to identify the element's purpose as an image for accessibility purposes
 const Thumbnail = props => (
-  <div className="thumbnail">
-    <div className="thumbnail-container">
-      <img alt={props.projectName} src={props.projectImage}  />
-    </div>
-    <div className="content">
-      <p><strong>{props.projectName}</strong></p>
-    </div>
-    {/* <span onClick={() => props.removeFriend(props.id)} className="remove">
-      𝘅
-    </span> */}
-  </div>
+  <div
+    className="thumbnail"
+    role="img"
+    aria-label="Recipe Image"
+    style={{
+      backgroundImage: `url(${props.src})`
+    }}
+  />
 );
 
 export default Thumbnail;
-
-// const Thumbnail = props => (
-//   <div
-//     className="thumbnail"
-//     role="img"
-//     aria-label="Recipe Image"
-//     style={{
-//       backgroundImage: `url(${props.src})`
-//     }}
-//   />
-// );
-
-// export default Thumbnail;

@@ -8,12 +8,12 @@ class CreateAccountPage extends Component {
   state = {
     username: null,
     password: null,
-    email: null,
-    firstName: null,
-    lastName: null,
-    position: null,
+    first_name: null,
+    last_name: null,
+    email_address: null,
+    company: null,
     phone: null,
-    linkedIn: null,
+    website: null,
     error: null
   }
   handleInputChanged = (event) => {
@@ -24,7 +24,7 @@ class CreateAccountPage extends Component {
   handleLogin = (event) => {
     event.preventDefault();
 
-    const { username, password } = this.state;
+    const { username, password, first_name, last_name, email_address, company, phone, website } = this.state;
     const { history } = this.props;
 
     // clear any previous errors so we don't confuse the user
@@ -43,9 +43,15 @@ class CreateAccountPage extends Component {
     }
 
     // post an auth request
-    axios.post('/api/users', {
+    axios.post('/api/users/recruiter', {
       username,
-      password
+      first_name,
+      last_name,
+      password,
+      email_address,
+      company,
+      phone,
+      website
     })
       .then(user => {
         // if the response is successful, make them log in
@@ -91,55 +97,55 @@ class CreateAccountPage extends Component {
               </div>
               <div>
                 <TextField
-                  name="email"
-                  hintText="email"
-                  floatingLabelText="email"
+                  name="email_address"
+                  hintText="Email"
+                  floatingLabelText="Email"
                   type="email"
                   onChange={this.handleInputChanged}
                 />
               </div>
               <div>
                 <TextField
-                  name="firstName"
+                  name="first_name"
                   hintText="First Name"
                   floatingLabelText="First Name"
-                  type="firstName"
+                  type="first_name"
                   onChange={this.handleInputChanged}
                 />
               </div>
               <div>
                 <TextField
-                  name="lastName"
+                  name="last_name"
                   hintText="Last Name"
                   floatingLabelText="Last Name"
-                  type="lastName"
+                  type="last_name"
                   onChange={this.handleInputChanged}
                 />
               </div>
               <div>
                 <TextField
-                  name="postion"
-                  hintText="Position"
-                  floatingLabelText="Postion"
-                  type="position"
+                  name="company"
+                  hintText="Company"
+                  floatingLabelText="Company"
+                  type="company"
                   onChange={this.handleInputChanged}
                 />
               </div>
               <div>
                 <TextField
                   name="phone"
-                  hintText="8675309"
-                  floatingLabelText="8675309"
+                  hintText="(555) 555-5555"
+                  floatingLabelText="(555) 555-5555"
                   type="phone"
                   onChange={this.handleInputChanged}
                 />
               </div>
               <div>
                 <TextField
-                  name="linkedIn"
-                  hintText="linkedin.com/YourName"
-                  floatingLabelText="linkedin.com/YourName"
-                  type="linkedIn"
+                  name="website"
+                  hintText="website"
+                  floatingLabelText="website"
+                  type="website"
                   onChange={this.handleInputChanged}
                 />
               </div>
