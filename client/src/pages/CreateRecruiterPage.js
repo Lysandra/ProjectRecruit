@@ -6,11 +6,11 @@ import RaisedButton from 'material-ui/RaisedButton';
 
 class CreateAccountPage extends Component {
   state = {
-    username: null,
+    
     password: null,
     first_name: null,
     last_name: null,
-    email_address: null,
+    email: null,
     company: null,
     phone: null,
     website: null,
@@ -24,7 +24,7 @@ class CreateAccountPage extends Component {
   handleLogin = (event) => {
     event.preventDefault();
 
-    const { username, password, first_name, last_name, email_address, company, phone, website } = this.state;
+    const { password, first_name, last_name, email, company, phone, website } = this.state;
     const { history } = this.props;
 
     // clear any previous errors so we don't confuse the user
@@ -35,20 +35,19 @@ class CreateAccountPage extends Component {
     // check to make sure they've entered a username and password.
     // this is very poor validation, and there are better ways
     // to do this in react, but this will suffice for the example
-    if (!username || !password) {
+    if (!email || !password) {
       this.setState({
-        error: 'A username and password is required.'
+        error: 'A email and password is required.'
       });
       return;
     }
 
     // post an auth request
     axios.post('/api/users/recruiter', {
-      username,
       first_name,
       last_name,
       password,
-      email_address,
+      email,
       company,
       phone,
       website
@@ -80,9 +79,10 @@ class CreateAccountPage extends Component {
               }
               <div>
                 <TextField
-                  name="username"
-                  hintText="Username"
-                  floatingLabelText="Username"
+                  name="email"
+                  hintText="Email"
+                  floatingLabelText="Email"
+                  type="email"
                   onChange={this.handleInputChanged}
                 />
               </div>
@@ -95,15 +95,7 @@ class CreateAccountPage extends Component {
                   onChange={this.handleInputChanged}
                 />
               </div>
-              <div>
-                <TextField
-                  name="email_address"
-                  hintText="Email"
-                  floatingLabelText="Email"
-                  type="email"
-                  onChange={this.handleInputChanged}
-                />
-              </div>
+              
               <div>
                 <TextField
                   name="first_name"
