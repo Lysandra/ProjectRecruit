@@ -3,6 +3,7 @@ const passport = require('passport');
 const router = express.Router();
 const db = require('../models');
 const recruitersController = require("../controllers/recruitersController");
+const projectsController = require("../controllers/projectsController");
 const candidatesController = require("../controllers/candidatesController");
 const mustBeLoggedIn = require('../shared/middleware/mustBeLoggedIn');
 
@@ -152,5 +153,9 @@ router.route("/recruiters")
 
 router.route("/candidates")
   .get(candidatesController.findAll);
+
+router.route("/projects")
+.get(projectsController.findAll);
+console.log("this is working");
   
 module.exports = router;
