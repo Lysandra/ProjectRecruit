@@ -11,15 +11,16 @@ function getCurrentUser(req, res) {
   // I'm picking only the specific fields its OK for the audience to see publicly
   // never send the whole user object in the response, and only show things it's OK
   // for others to read (like ID, name, email address, etc.)
-  const { id, username } = req.user;
+  const { id, email } = req.user;
   res.json({
-    id, username
+    id, email
   });
 }
 
 router.route('/auth')
   // GET to /api/auth will return current logged in user info
   .get((req, res) => {
+    console.log(req.user)
     if (!req.user) {
       return res.status(401).json({
         message: 'You are not currently logged in.'
@@ -30,9 +31,10 @@ router.route('/auth')
   })
   // POST to /api/auth with username and password will authenticate the user
   .post(passport.authenticate('local'), (req, res) => {
+    console.log(req.user)
     if (!req.user) {
       return res.status(401).json({
-        message: 'Invalid username or password.'
+        message: 'Invalid email or password.'
       })
     }
 
@@ -48,15 +50,29 @@ router.route('/auth')
   });
 
 router.route('/users/candidate')
+  .get((req, res, next) => {
+    db.Candidate.find({
+      where: {
+        email: req.user.email
+      }
+    })
+    .then(candidate => {
+      res.json(candidate)
+      
+    })
+    .catch(err =>{
+      console.log(error)
+    })
+  })
   // POST to /api/users will create a new user
   .post((req, res, next) => {
     db.User.create({
-      username: req.body.username,
+      email: req.body.email,
       password: req.body.password
     })
       .then(user => {
         console.log(user)
-        const { id, username } = user;
+        const { id, email } = user;
         db.Candidate.create({
           firstName: req.body.firstName,
           lastName: req.body.lastName,
@@ -64,12 +80,13 @@ router.route('/users/candidate')
           email: req.body.email,
           phone: req.body.phone,
           linkedIn: req.body.linkedIn,
+          profileUrl: req.body.profileUrl,
           userId: id
         })
           .then(candidate => {
             console.log(candidate)
             res.json({
-              id, username
+              id, email
             });
           })
         
@@ -80,7 +97,7 @@ router.route('/users/candidate')
         // with that flash message
         if (err.code === 11000) {
           res.status(400).json({
-            message: 'Username already in use.'
+            message: 'Email already in use.'
           })
         }
 
@@ -95,16 +112,16 @@ router.route('/users/recruiter')
 // POST to /api/users will create a new user
 .post((req, res, next) => {
   db.User.create({
-    username: req.body.username,
+    email: req.body.email,
     password: req.body.password
   })
     .then(user => {
       console.log(user)
-      const { id, username } = user;
+      const { id, email } = user;
       db.Recruiter.create({
         first_name: req.body.first_name,
         last_name: req.body.last_name,
-        email_address: req.body.email_address,
+        email: req.body.email,
         company: req.body.company,
         phone: req.body.phone,
         website: req.body.website,
@@ -113,7 +130,7 @@ router.route('/users/recruiter')
         .then(recruiter => {
           console.log(recruiter)
           res.json({
-            id, username
+            id, email
           });
         })
       
@@ -124,7 +141,7 @@ router.route('/users/recruiter')
       // with that flash message
       if (err.code === 11000) {
         res.status(400).json({
-          message: 'Username already in use.'
+          message: 'Email already in use.'
         })
       }
 

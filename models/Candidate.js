@@ -9,6 +9,7 @@ const CandidateSchema = new Schema({
   phone: { type: String, required: true },
   linkedIn: { type: String, required: true },
   userId: {type: String, required: true },
+  profileUrl: {type: String, required: true }
   
 });
 
