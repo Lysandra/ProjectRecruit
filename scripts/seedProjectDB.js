@@ -10,9 +10,11 @@ mongoose.connect(
 
 const projectSeed = [
   {
+    project_name: "Project 1",
     project_image: "project1.jpg"
   },
   {
+    project_name: "Project 2",
     project_image: "project2.jpg"
   }
 ];

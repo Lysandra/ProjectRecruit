@@ -68,6 +68,7 @@ class Projects extends Component {
               <Thumbnail
                 key={thumbnail._id}
                 _id={thumbnail._id}
+                project_name={thumbnail.project_name}
                 project_image={thumbnail.project_image}
               />
             ))}
