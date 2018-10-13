@@ -1,11 +1,11 @@
 const db = require("../models");
 
-// Defining methods for the recruitersController
+// Defining methods for the projectsController
 module.exports = {
   findAll: function(req, res) {
     console.log("req" + req);
     console.log("res" + res);
-    db.Recruiter
+    db.Project
       .find(req.query)
       .sort({ date: -1 })
       .then(dbModel => res.json(dbModel))
@@ -13,9 +13,9 @@ module.exports = {
   },
 
   findById: function(req, res) {
-    db.Recruiter
+    db.Project
       .findById(req.params.id)
-      .then(dbRecruiter => res.json(dbRecruiter))
+      .then(dbProject => res.json(dbProject))
       .catch(err => res.status(422).json(err));
   },
 }; 

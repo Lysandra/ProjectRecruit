@@ -1,19 +1,34 @@
 import React, { Component } from 'react';
+import WelcomeRecruiter from "./components/WelcomeRecruiter";
+import Header from "./components/Header";
 import API from "../../utils/API";
-import Thumbnail from '../../components/Thumbnail';
+import Thumbnail from "./components/Thumbnail";
+import { Col, Row, Container } from "reactstrap";
+// import projects from "../../projects.json";
 
 class Projects extends Component {
 
   state = {
-    projects: [],
+    recruiters: [],
+    projects: []
   };
 
   
   componentDidMount() {
-    this.loadProjects();
+    this.getRecruiters();
+    this.getProjects();
   }
 
-  loadProjects = () => {
+  getRecruiters = () => {
+    API.getRecruiters()
+      .then((res) => {
+        console.log ("***********" + res.data) 
+        this.setState({ recruiters: res.data });
+      })
+      .catch(err => console.log(err));
+  };
+
+  getProjects = () => {
     API.getProjects()
       .then((res) => {
         console.log ("***********" + res.data) 
@@ -22,14 +37,43 @@ class Projects extends Component {
       .catch(err => console.log(err));
   };
 
+  // getRecruiters = id => {
+  //   const recruiter = this.state.recruiters.find(recruiter => recruiters._id === id);
+  //   API.getRecruiter()
+  //     .then((res) => {
+  //       console.log ("***********" + res.data) 
+  //       this.setState({ recruiters: res.data });
+  //     })
+  //     .catch(err => console.log(err));
+  // };
 
   render() {
     return (
-      <div>
-        <Thumbnail src="/thumbnaildiv.png" alt="242x200">
-        This is the Projects page where all Project Thumbnails and Titles will be displayed so a Recruiter can click the Projects to display the Recruiter page for rating.
-        </Thumbnail>
-      </div>
+      <Container>
+        <Row>
+          <Col size="xl-6">
+            {this.state.recruiters.map(welcomerecruiter => (
+              <WelcomeRecruiter
+                key={welcomerecruiter._id}
+                _id={welcomerecruiter._id}
+                first_name={welcomerecruiter.first_name}
+                last_name={welcomerecruiter.last_name}
+              />
+            ))}
+          </Col>
+        </Row>
+        <Row>
+          <Col size="xl-6"> 
+            {this.state.projects.map(thumbnail => (
+              <Thumbnail
+                key={thumbnail._id}
+                _id={thumbnail._id}
+                project_image={thumbnail.project_image}
+              />
+            ))}
+          </Col>
+        </Row>
+      </Container>
     );
   }
 };
