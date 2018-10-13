@@ -172,7 +172,7 @@ router.route("/candidates")
   .get(candidatesController.findAll);
 
 router.route("/projects")
-.get(projectsController.findAll);
-console.log("this is working");
+  .get(projectsController.findAll);
+  console.log("this is working");
   
 module.exports = router;

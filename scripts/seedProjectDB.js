@@ -11,11 +11,11 @@ mongoose.connect(
 const projectSeed = [
   {
     project_name: "Project 1",
-    project_image: "project1.jpg"
+    project_image: "https://upload.wikimedia.org/wikipedia/en/thumb/4/47/Spongebob-squarepants.svg/666px-Spongebob-squarepants.svg.png"
   },
   {
     project_name: "Project 2",
-    project_image: "project2.jpg"
+    project_image: "https://www.google.com/url?sa=i&rct=j&q=&esrc=s&source=images&cd=&cad=rja&uact=8&ved=2ahUKEwiw3Oix04PeAhVmk-AKHfB-AtEQjRx6BAgBEAU&url=https%3A%2F%2Fbookboon.com%2Fblog%2F2013%2F05%2Fproject-launch-stage-how-to-get-a-project-properly-running%2F&psig=AOvVaw2fBFppWNO0g3Ddh322IFeo&ust=1539528141701759"
   }
 ];
 

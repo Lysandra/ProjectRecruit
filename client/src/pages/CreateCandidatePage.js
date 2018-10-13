@@ -58,12 +58,12 @@ class CreateAccountPage extends Component {
         // if the response is successful, make them log in
         history.push('/login');
       })
-      .catch(err => {
+      // .catch(err => {
 
-        this.setState({
-          error: err.response.data.message || err.message
-        });
-      });
+      //   this.setState({
+      //     error: err.response.data.message || err.message
+      //   });
+      // });
   }
   render() {
     const { error } = this.state;

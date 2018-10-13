@@ -37,15 +37,15 @@ class Projects extends Component {
       .catch(err => console.log(err));
   };
 
-  // getRecruiters = id => {
-  //   const recruiter = this.state.recruiters.find(recruiter => recruiters._id === id);
-  //   API.getRecruiter()
-  //     .then((res) => {
-  //       console.log ("***********" + res.data) 
-  //       this.setState({ recruiters: res.data });
-  //     })
-  //     .catch(err => console.log(err));
-  // };
+  getRecruiter = id => {
+    // const recruiter = this.state.recruiters.find(recruiter => recruiters._id === id);
+    API.getRecruiter(id)
+      .then((res) => {
+        console.log ("***********" + res.data) 
+        this.setState({ recruiters: res.data });
+      })
+      .catch(err => console.log(err));
+  };
 
   render() {
     return (
