@@ -37,15 +37,15 @@ class Projects extends Component {
       .catch(err => console.log(err));
   };
 
-  // getRecruiters = id => {
-  //   const recruiter = this.state.recruiters.find(recruiter => recruiters._id === id);
-  //   API.getRecruiter()
-  //     .then((res) => {
-  //       console.log ("***********" + res.data) 
-  //       this.setState({ recruiters: res.data });
-  //     })
-  //     .catch(err => console.log(err));
-  // };
+  getRecruiter = id => {
+    // const recruiter = this.state.recruiters.find(recruiter => recruiters._id === id);
+    API.getRecruiter(id)
+      .then((res) => {
+        console.log ("***********" + res.data) 
+        this.setState({ recruiters: res.data });
+      })
+      .catch(err => console.log(err));
+  };
 
   render() {
     return (
@@ -68,6 +68,7 @@ class Projects extends Component {
               <Thumbnail
                 key={thumbnail._id}
                 _id={thumbnail._id}
+                project_name={thumbnail.project_name}
                 project_image={thumbnail.project_image}
               />
             ))}
