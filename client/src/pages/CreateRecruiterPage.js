@@ -6,8 +6,14 @@ import RaisedButton from 'material-ui/RaisedButton';
 
 class CreateAccountPage extends Component {
   state = {
-    username: null,
+    
     password: null,
+    first_name: null,
+    last_name: null,
+    email: null,
+    company: null,
+    phone: null,
+    website: null,
     error: null
   }
   handleInputChanged = (event) => {
@@ -18,7 +24,7 @@ class CreateAccountPage extends Component {
   handleLogin = (event) => {
     event.preventDefault();
 
-    const { username, password } = this.state;
+    const { password, first_name, last_name, email, company, phone, website } = this.state;
     const { history } = this.props;
 
     // clear any previous errors so we don't confuse the user
@@ -29,17 +35,22 @@ class CreateAccountPage extends Component {
     // check to make sure they've entered a username and password.
     // this is very poor validation, and there are better ways
     // to do this in react, but this will suffice for the example
-    if (!username || !password) {
+    if (!email || !password) {
       this.setState({
-        error: 'A username and password is required.'
+        error: 'A email and password is required.'
       });
       return;
     }
 
     // post an auth request
-    axios.post('/api/users', {
-      username,
-      password
+    axios.post('/api/users/recruiter', {
+      first_name,
+      last_name,
+      password,
+      email,
+      company,
+      phone,
+      website
     })
       .then(user => {
         // if the response is successful, make them log in
@@ -68,9 +79,10 @@ class CreateAccountPage extends Component {
               }
               <div>
                 <TextField
-                  name="username"
-                  hintText="Username"
-                  floatingLabelText="Username"
+                  name="email"
+                  hintText="Email"
+                  floatingLabelText="Email"
+                  type="email"
                   onChange={this.handleInputChanged}
                 />
               </div>
@@ -80,6 +92,52 @@ class CreateAccountPage extends Component {
                   hintText="Password"
                   floatingLabelText="Password"
                   type="password"
+                  onChange={this.handleInputChanged}
+                />
+              </div>
+              
+              <div>
+                <TextField
+                  name="first_name"
+                  hintText="First Name"
+                  floatingLabelText="First Name"
+                  type="first_name"
+                  onChange={this.handleInputChanged}
+                />
+              </div>
+              <div>
+                <TextField
+                  name="last_name"
+                  hintText="Last Name"
+                  floatingLabelText="Last Name"
+                  type="last_name"
+                  onChange={this.handleInputChanged}
+                />
+              </div>
+              <div>
+                <TextField
+                  name="company"
+                  hintText="Company"
+                  floatingLabelText="Company"
+                  type="company"
+                  onChange={this.handleInputChanged}
+                />
+              </div>
+              <div>
+                <TextField
+                  name="phone"
+                  hintText="(555) 555-5555"
+                  floatingLabelText="(555) 555-5555"
+                  type="phone"
+                  onChange={this.handleInputChanged}
+                />
+              </div>
+              <div>
+                <TextField
+                  name="website"
+                  hintText="website"
+                  floatingLabelText="website"
+                  type="website"
                   onChange={this.handleInputChanged}
                 />
               </div>

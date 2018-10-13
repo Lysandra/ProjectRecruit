@@ -1,67 +1,81 @@
-import React, { Component } from "react";
-import { Link } from "react-router-dom";
-import { Col, Row, Container, Jumbotron} from "reactstrap";
-
-//import API from "../../utils/API";
-import "./Projects.css";
-import Thumbnail from "../../components/Thumbnail";
-import projects from "./projects.json";
-
+import React, { Component } from 'react';
+import WelcomeRecruiter from "./components/WelcomeRecruiter";
+import Header from "./components/Header";
+import API from "../../utils/API";
+import Thumbnail from "./components/Thumbnail";
+import { Col, Row, Container } from "reactstrap";
+// import projects from "../../projects.json";
 
 class Projects extends Component {
-  state = {
-    projects
-  };
-  // When this component mounts, grab the book with the _id of this.props.match.params.id
-  // e.g. localhost:3000/books/599dcb67f0f16317844583fc
-  // componentDidMount() {
-  //   API.getProjects(this.props.match.params.id)
-  //     .then(res => this.setState({ projects: res.data }))
-  //     .catch(err => console.log(err));
-  // }
 
-  // removeFriend = id => {
-  //   // Filter this.state.friends for friends with an id not equal to the id being removed
-  //   const friends = this.state.friends.filter(friend => friend.id !== id);
-  //   // Set this.state.friends equal to the new friends array
-  //   this.setState({ friends });
+  state = {
+    recruiters: [],
+    projects: []
+  };
+
+  
+  componentDidMount() {
+    this.getRecruiters();
+    this.getProjects();
+  }
+
+  getRecruiters = () => {
+    API.getRecruiters()
+      .then((res) => {
+        console.log ("***********" + res.data) 
+        this.setState({ recruiters: res.data });
+      })
+      .catch(err => console.log(err));
+  };
+
+  getProjects = () => {
+    API.getProjects()
+      .then((res) => {
+        console.log ("***********" + res.data) 
+        this.setState({ projects: res.data });
+      })
+      .catch(err => console.log(err));
+  };
+
+  // getRecruiters = id => {
+  //   const recruiter = this.state.recruiters.find(recruiter => recruiters._id === id);
+  //   API.getRecruiter()
+  //     .then((res) => {
+  //       console.log ("***********" + res.data) 
+  //       this.setState({ recruiters: res.data });
+  //     })
+  //     .catch(err => console.log(err));
   // };
 
   render() {
     return (
-      <Container fluid>
+      <Container>
         <Row>
-          <Col md="6" sm="12">
-          <Jumbotron>
-              <h1>Trilogy Demo Day</h1>
-          </Jumbotron>     
+          <Col size="xl-6">
+            {this.state.recruiters.map(welcomerecruiter => (
+              <WelcomeRecruiter
+                key={welcomerecruiter._id}
+                _id={welcomerecruiter._id}
+                first_name={welcomerecruiter.first_name}
+                last_name={welcomerecruiter.last_name}
+              />
+            ))}
           </Col>
         </Row>
         <Row>
-          <Col md="6" sm="12">
-            <article>
-              <h2>UCF Coding Boot Camp</h2>
-              <h3>Melrose Center Orlando Public Library</h3>
-              <h3>101 East Central Blvd.</h3>
-              <h3>Orlando, FL 32801</h3>
-            </article>
+          <Col size="xl-6"> 
+            {this.state.projects.map(thumbnail => (
+              <Thumbnail
+                key={thumbnail._id}
+                _id={thumbnail._id}
+                project_image={thumbnail.project_image}
+              />
+            ))}
           </Col>
-        </Row>
-        <Row>
-        {this.state.projects.map(project => (
-          <Thumbnail         
-            id={project.id}
-            key={project.id}
-            projectName={project.projectName}
-            projectImage={project.projectImage}
-          />
-        ))};            
         </Row>
       </Container>
     );
   }
-}
+};
 
 export default Projects;
-
-{/* <Link to="/">← Back to Authors</Link> */}
