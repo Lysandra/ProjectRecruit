@@ -168,11 +168,18 @@ router.route("/recruiters")
   .get(recruitersController.findAll);
   console.log("this is working");
 
-router.route("/candidates")
-  .get(candidatesController.findAll);
+router.route('/recruiters/id')
+  .get(recruitersController.findById);
+  console.log("findByIdapiRoutes is working");
 
 router.route("/projects")
   .get(projectsController.findAll);
   console.log("this is working");
+  
+router.route("/projects/id")
+  .get(projectsController.findById);
+
+router.route("/candidates")
+  .get(candidatesController.findAll);
   
 module.exports = router;

@@ -14,7 +14,7 @@ import LoginPage from './pages/LoginPage';
 import Candidate from './pages/Candidate';
 import NotFoundPage from './pages/NotFoundPage';
 import Projects from './pages/Projects';
-import Recruiters from './pages/Recruiters';
+import Recruiter from './pages/Recruiter/Recruiter';
 import RegisterSplash from './pages/RegisterSplash';
 
 class App extends Component {
@@ -53,7 +53,7 @@ class App extends Component {
               <Route exact path="/create/recruiter" component={CreateRecruiterPage} />
               <Route exact path="/candidate" component={Candidate} />       
               <Route exact path="/projects" component={Projects} />
-              <Route exact path="/recruiters" component={Recruiters} />
+              <Route exact path="/recruiter" component={Recruiter} />
               <Route component={NotFoundPage} />
             </Switch>
           </Fragment>

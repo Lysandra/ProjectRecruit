@@ -1,29 +1,40 @@
 import React, { Component } from 'react';
 import WelcomeRecruiter from "./components/WelcomeRecruiter";
+import ColoredLine from "../../components/ColoredLine";
 import Header from "./components/Header";
 import API from "../../utils/API";
 import Thumbnail from "./components/Thumbnail";
 import { Col, Row, Container } from "reactstrap";
+// import withUser from "../../services/withUser";
 // import projects from "../../projects.json";
 
 class Projects extends Component {
 
   state = {
     recruiters: [],
-    projects: []
+    projects: [],
   };
 
   
   componentDidMount() {
     this.getRecruiters();
     this.getProjects();
-  }
+  };
 
   getRecruiters = () => {
     API.getRecruiters()
       .then((res) => {
         console.log ("***********" + res.data) 
         this.setState({ recruiters: res.data });
+      })
+      .catch(err => console.log(err));
+  };
+
+  getRecruiter = id => {
+    API.getRecruiter(id)
+      .then((res) => {
+        console.log ("***********" + res.data) 
+        this.setState({ recruiters: res.data});
       })
       .catch(err => console.log(err));
   };
@@ -37,17 +48,28 @@ class Projects extends Component {
       .catch(err => console.log(err));
   };
 
-  getRecruiter = id => {
-    // const recruiter = this.state.recruiters.find(recruiter => recruiters._id === id);
-    API.getRecruiter(id)
+  getProject = id => {
+    API.getProject(id)
       .then((res) => {
         console.log ("***********" + res.data) 
-        this.setState({ recruiters: res.data });
+        this.setState({ projects: res.data});
       })
       .catch(err => console.log(err));
   };
 
-  render() {
+  handleGetProjectClick = id => {
+    API.getProject(id).then(res => this.getProject(id));
+  };
+
+  // handleClick() {
+  //   console.log('this is the handle click this:', this);
+  //   const newProject = { ...project };
+  //   if (newProject._id === _id) {
+  //     return newProject
+  //   };
+  // };
+
+  render() {  
     return (
       <Container>
         <Row>
@@ -63,9 +85,15 @@ class Projects extends Component {
           </Col>
         </Row>
         <Row>
-          <Col size="xl-6"> 
+          <Col md="12">
+            <ColoredLine color="rgb(0, 188, 212)" />
+          </Col>
+        </Row>
+        <Row>
+          <Col size="col-xl-6 col-xl-offset-3 col-centered"> 
             {this.state.projects.map(thumbnail => (
               <Thumbnail
+                handleGetProjectClick={this.handleGetProjectClick}
                 key={thumbnail._id}
                 _id={thumbnail._id}
                 project_name={thumbnail.project_name}

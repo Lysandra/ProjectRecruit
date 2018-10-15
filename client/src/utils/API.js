@@ -8,7 +8,7 @@ export default {
 
   //Get recruiter by ID
   getRecruiter: function(id) {
-    return axios.get("/api/recruiters/" + id);
+    return axios.get("/api/recruiters/id");
   },
 
   // Get all projects
@@ -18,7 +18,7 @@ export default {
 
   // Get project by ID
   getProject: function(id) {
-    return axios.get("/api/projects/" + id);
+    return axios.get("/api/projects/id");
   },
     
   getCandidates: function() {
