@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import WelcomeRecruiter from "./components/WelcomeRecruiter";
+import ColoredLine from "../../components/ColoredLine";
 import Header from "./components/Header";
 import API from "../../utils/API";
 import Thumbnail from "./components/Thumbnail";
@@ -95,6 +96,11 @@ class Projects extends Component {
                 last_name={welcomerecruiter.last_name}
               />
             ))}
+          </Col>
+        </Row>
+        <Row>
+          <Col md="12">
+            <ColoredLine color="rgb(0, 188, 212)" />
           </Col>
         </Row>
         <Row>

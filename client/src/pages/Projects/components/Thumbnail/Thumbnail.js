@@ -10,6 +10,7 @@ const Thumbnail = ({ project_name, project_image }) => (
     role="img"
     aria-label="Project Image">   
     <img alt={project_name} src={project_image} />
+    <p className="p_thumbnail">{project_name}</p>
   </div>
 );
 
