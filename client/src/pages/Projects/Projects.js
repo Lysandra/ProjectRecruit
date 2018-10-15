@@ -13,7 +13,6 @@ class Projects extends Component {
   state = {
     recruiters: [],
     projects: [],
-    // users: []
   };
 
   
@@ -22,44 +21,20 @@ class Projects extends Component {
     this.getProjects();
   };
 
-  // componentDidMount() {
-  //   // only try loading stuff if the user is logged in.
-  //   if (!this.props.user) {
-  //     return;
-  //   }
-
-  //   axios.get('/api/stuff')
-  //     .then(res => {
-  //       this.setState({
-  //         stuff: res.data
-  //       });
-  //     })
-  //     .catch(err => {
-  //       // if we got an error, we'll just log it and set stuff to an empty array
-  //       console.log(err);
-  //       this.setState({
-  //         stuff: []
-  //       });
-  //     });
-  // }
-
-  // getCurrentUser = () => {
-  //   API.getCurrentUser()
-  //   console.log(user)
-  //     .then((res) => {
-  //       console.log ("***********" + res.data) 
-  //       this.setState({ user: res.data });
-  //     })
-  //     .catch(err => console.log(err));
-  // };
-
-  
-
   getRecruiters = () => {
     API.getRecruiters()
       .then((res) => {
         console.log ("***********" + res.data) 
         this.setState({ recruiters: res.data });
+      })
+      .catch(err => console.log(err));
+  };
+
+  getRecruiter = id => {
+    API.getRecruiter(id)
+      .then((res) => {
+        console.log ("***********" + res.data) 
+        this.setState({ recruiters: res.data});
       })
       .catch(err => console.log(err));
   };
@@ -73,15 +48,26 @@ class Projects extends Component {
       .catch(err => console.log(err));
   };
 
-  getRecruiter = id => {
-    // const recruiter = this.state.recruiters.find(recruiter => recruiters._id === id);
-    API.getRecruiter(id)
+  getProject = id => {
+    API.getProject(id)
       .then((res) => {
         console.log ("***********" + res.data) 
-        this.setState({ recruiters: res.data});
+        this.setState({ projects: res.data});
       })
       .catch(err => console.log(err));
   };
+
+  handleGetProjectClick = id => {
+    API.getProject(id).then(res => this.getProject(id));
+  };
+
+  // handleClick() {
+  //   console.log('this is the handle click this:', this);
+  //   const newProject = { ...project };
+  //   if (newProject._id === _id) {
+  //     return newProject
+  //   };
+  // };
 
   render() {  
     return (
@@ -104,9 +90,10 @@ class Projects extends Component {
           </Col>
         </Row>
         <Row>
-          <Col size="xl-6"> 
+          <Col size="col-xl-6 col-xl-offset-3 col-centered"> 
             {this.state.projects.map(thumbnail => (
               <Thumbnail
+                handleGetProjectClick={this.handleGetProjectClick}
                 key={thumbnail._id}
                 _id={thumbnail._id}
                 project_name={thumbnail.project_name}
