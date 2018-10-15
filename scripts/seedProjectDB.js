@@ -11,7 +11,7 @@ mongoose.connect(
 const projectSeed = [
   {
     project_name: "Project 1",
-    project_image: "https://upload.wikimedia.org/wikipedia/en/thumb/4/47/Spongebob-squarepants.svg/666px-Spongebob-squarepants.svg.png"
+    project_image: "../img/project1.jpg"
   },
   {
     project_name: "Project 2",
