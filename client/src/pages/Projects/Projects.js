@@ -4,20 +4,55 @@ import Header from "./components/Header";
 import API from "../../utils/API";
 import Thumbnail from "./components/Thumbnail";
 import { Col, Row, Container } from "reactstrap";
+import withUser from "../../services/withUser";
 // import projects from "../../projects.json";
 
 class Projects extends Component {
 
   state = {
     recruiters: [],
-    projects: []
+    projects: [],
+    // users: []
   };
 
   
   componentDidMount() {
     this.getRecruiters();
     this.getProjects();
-  }
+  };
+
+  // componentDidMount() {
+  //   // only try loading stuff if the user is logged in.
+  //   if (!this.props.user) {
+  //     return;
+  //   }
+
+  //   axios.get('/api/stuff')
+  //     .then(res => {
+  //       this.setState({
+  //         stuff: res.data
+  //       });
+  //     })
+  //     .catch(err => {
+  //       // if we got an error, we'll just log it and set stuff to an empty array
+  //       console.log(err);
+  //       this.setState({
+  //         stuff: []
+  //       });
+  //     });
+  // }
+
+  // getCurrentUser = () => {
+  //   API.getCurrentUser()
+  //   console.log(user)
+  //     .then((res) => {
+  //       console.log ("***********" + res.data) 
+  //       this.setState({ user: res.data });
+  //     })
+  //     .catch(err => console.log(err));
+  // };
+
+  
 
   getRecruiters = () => {
     API.getRecruiters()
@@ -42,12 +77,12 @@ class Projects extends Component {
     API.getRecruiter(id)
       .then((res) => {
         console.log ("***********" + res.data) 
-        this.setState({ recruiters: res.data });
+        this.setState({ recruiters: res.data});
       })
       .catch(err => console.log(err));
   };
 
-  render() {
+  render() {  
     return (
       <Container>
         <Row>

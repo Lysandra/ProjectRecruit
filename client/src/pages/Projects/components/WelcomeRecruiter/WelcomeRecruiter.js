@@ -1,7 +1,7 @@
 import React from "react";
 import "./WelcomeRecruiter.css";
 
-const WelcomeRecruiter = ({ _id, first_name, last_name }) => {
+const WelcomeRecruiter = ({ first_name, last_name }) => {
   return (
     <div className="welcomerecruiter">
     <h6>Welcome {first_name} {last_name} to Trilogy's Project Demo Day!</h6>

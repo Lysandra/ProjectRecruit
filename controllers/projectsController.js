@@ -14,7 +14,7 @@ module.exports = {
 
   findById: function(req, res) {
     db.Project
-      .findById(req.params.id)
+      .findById({ where: { _id: res.project._id }})
       .then(dbProject => res.json(dbProject))
       .catch(err => res.status(422).json(err));
   },
