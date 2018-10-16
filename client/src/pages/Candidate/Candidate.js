@@ -22,24 +22,31 @@ import { Col, Row, Container } from "reactstrap";
 class Candidate extends Component {
 
   state = {
-    candidates: [],
+    candidate: undefined,
+    project: undefined,
   };
 
   
   componentDidMount() {
-    this.loadCandidates();
+    this.loadCandidate();
   }
 
-  loadCandidates = () => {
-    API.getCandidates()
+  loadCandidate = () => {
+    API.getCandidate()
       .then((res) => {
         console.log ("***********" + res.data) 
-        this.setState({ candidates: res.data });
+        if (res.data) {
+        this.setState({ candidate: res.data.candidate, project: res.data.project });
+        }
+        
       })
       .catch(err => console.log(err));
+
   };
 
   render() {
+    const { candidate, project } =this.state;
+    if (!candidate) return null;
     return (
       <Container>
         <Row>
@@ -54,17 +61,17 @@ class Candidate extends Component {
         <Row>
           <Col md={{size:3,offset:2}}>
             <ProfilePicture
-              profileImage="https://lh3.googleusercontent.com/-z-h2bK8PjKY/AAAAAAAAAAI/AAAAAAAAYNg/iNq2qBxNnFw/s640-il/photo.jpg"     
-            />
+              profileImage={candidate.profileUrl}
+            />  
           </Col>
           <Col md="5">
             <ProfileInfo
-              firstName="Cristy"
-              lastName="Sillerico"
-              title="Full Stack Software Engineer"
-              email="cristysillerico@gmail.com"
-              phoneNumber="407-717-9056"
-              linkedIn="https://www.linkedin.com/feed/"
+              firstName={candidate.firstName}
+              lastName={candidate.lastName}
+              position={candidate.position}
+              email={candidate.email}
+              phone={candidate.phone}
+              linkedIn={candidate.linkedIn}
             />
           </Col>
         </Row>   
@@ -75,12 +82,17 @@ class Candidate extends Component {
         </Row>
         <Row>
           <Col md={{size:6,offset:3}}>
+            {project ? (
             <ProjectInfo
               projectName="Project Name"             
               summary="This is the summary of our project. We will go on and on on how great it is and how it will help you in the future."
               projectLink="Project Link"
               technologiesUsed="React | React Native | Node JS| MongoDB"
             />
+            ) : (
+              <div> "Add form here" 
+              </div>
+            )}
           </Col>
         </Row> 
         <Row>

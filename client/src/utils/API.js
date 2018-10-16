@@ -24,4 +24,8 @@ export default {
   getCandidates: function() {
     return axios.get("/api/candidates");
   },
+
+  getCandidate: function() {
+    return axios.get(`/api/users/candidate`);
+  },
 };
