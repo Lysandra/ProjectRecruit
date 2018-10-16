@@ -51,13 +51,25 @@ router.route('/auth')
 
 router.route('/users/candidate')
   .get((req, res, next) => {
+    console.log(req.user, "line 54")
     db.Candidate.find({
-      where: {
+         
         email: req.user.email
-      }
     })
     .then(candidate => {
-      res.json(candidate)
+      db.Project.find({
+        userId: req.user._id
+      })
+      .then(project => {
+        const data = {
+          project: project[0],
+          candidate: candidate[0]
+        }
+        res.json(data)
+      })
+      .catch(err =>{
+        console.log(error)
+      })
       
     })
     .catch(err =>{

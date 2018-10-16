@@ -36,7 +36,7 @@ class HomePage extends Component {
       <Fragment>
         {user && stuff &&
           <div>
-            Welcome back, {user.username}!
+            Welcome back, {user.email}!
           <List>
             {/* {stuff.map((s, i) => <ListItem key={i} primaryText={s} />)} */}
           </List>
