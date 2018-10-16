@@ -11,8 +11,9 @@ import { Col, Row, Container } from "reactstrap";
 class Projects extends Component {
 
   state = {
-    recruiters: [],
+    recruiter: "",
     projects: [],
+    recruiters: [],
   };
 
   
@@ -30,11 +31,11 @@ class Projects extends Component {
       .catch(err => console.log(err));
   };
 
-  getRecruiter = id => {
+  handleGetRecruiter = id => {
     API.getRecruiter(id)
       .then((res) => {
         console.log ("***********" + res.data) 
-        this.setState({ recruiters: res.data});
+        this.setState({ recruiter: res.data});
       })
       .catch(err => console.log(err));
   };

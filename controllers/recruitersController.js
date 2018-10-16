@@ -14,8 +14,10 @@ module.exports = {
 
   findById: function(req, res) {
     db.Recruiter
-      .findById({ where: { _id: res.user._id }})
+      // .findById({ where: { _id: res.user._id }})
+      .findById(req.params._id)
       .then(dbRecruiter => res.json(dbRecruiter))
       .catch(err => res.status(422).json(err));
+      console.log(req.params._id)
   },
 }; 

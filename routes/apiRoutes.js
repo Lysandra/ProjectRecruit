@@ -168,7 +168,7 @@ router.route("/recruiters")
   .get(recruitersController.findAll);
   console.log("this is working");
 
-router.route('/recruiters/id')
+router.route('/recruiters/:id')
   .get(recruitersController.findById);
   console.log("findByIdapiRoutes is working");
 
