@@ -9,9 +9,9 @@ const ProfileInfo = props => {
         <p>{props.firstName}</p>
         <p>{props.lastName}</p>
       </div>
-        <p>{props.title}</p>
+        <p>{props.position}</p>
         <p>{props.email}</p>
-        <p>{props.phoneNumber}</p>
+        <p>{props.phone}</p>
         <p>{props.linkedIn}</p>     
     </div>
   )
