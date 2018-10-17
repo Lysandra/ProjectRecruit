@@ -49,6 +49,25 @@ router.route('/auth')
     });
   });
 
+router.route("/users/project")
+  .post((req, res, next) => {
+    db.Project.create({
+      project_name: req.body.project_name,
+      project_image: req.body.project_image,
+      project_link: req.body.project_link,
+      summary: req.body.summary,
+      technologies_used: req.body.technologies_used,
+      userId: req.user._id
+    }).then(() => {
+      return res.status(200).json({
+        message: 'Project Created!.'
+      })
+    }).catch(err => {
+      console.log(err)
+    })
+   
+  })
+  
 router.route('/users/candidate')
   .get((req, res, next) => {
     console.log(req.user, "line 54")
@@ -100,7 +119,10 @@ router.route('/users/candidate')
             res.json({
               id, email
             });
+          }).catch(err => {
+            console.log(err)
           })
+          
         
       })
       .catch(err => {

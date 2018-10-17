@@ -31,6 +31,7 @@ class HomePage extends Component {
   render() {
     const { user } = this.props; // get the user prop from props
     const { stuff } = this.state; // get stuff from state
+    console.log(user)
 
     return (
       <Fragment>

@@ -82,17 +82,12 @@ class Candidate extends Component {
         </Row>
         <Row>
           <Col md={{size:6,offset:3}}>
-            {project ? (
             <ProjectInfo
-              projectName="Project Name"             
-              summary="This is the summary of our project. We will go on and on on how great it is and how it will help you in the future."
-              projectLink="Project Link"
-              technologiesUsed="React | React Native | Node JS| MongoDB"
+            project_name={project.project_name}
+            project_image={project.project_image}
+            project_link={project.project_link}
+            technologies_used={project.used} 
             />
-            ) : (
-              <div> "Add form here" 
-              </div>
-            )}
           </Col>
         </Row> 
         <Row>
