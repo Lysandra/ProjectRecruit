@@ -9,6 +9,7 @@ import { withUser, update } from './services/withUser';
 
 import CreateCandidatePage from './pages/CreateCandidatePage';
 import CreateRecruiterPage from './pages/CreateRecruiterPage';
+import CreateProjectPage from './pages/CreateProjectPage';
 import HomePage from './pages/HomePage';
 import LoginPage from './pages/LoginPage';
 import Candidate from './pages/Candidate';
@@ -51,6 +52,7 @@ class App extends Component {
               <Route exact path="/create" component={RegisterSplash} />
               <Route exact path="/create/candidate" component={CreateCandidatePage} />
               <Route exact path="/create/recruiter" component={CreateRecruiterPage} />
+              <Route exact path="/create/project" component={CreateProjectPage} />
               <Route exact path="/candidate" component={Candidate} />       
               <Route exact path="/projects" render={() => <Projects user={user}/>} />
               <Route exact path="/recruiter" render={() => <Recruiter user={user}/>} />
