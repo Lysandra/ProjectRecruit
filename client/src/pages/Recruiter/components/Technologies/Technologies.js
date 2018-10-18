@@ -6,11 +6,7 @@ import "./Technologies.css";
 // It will always keep square proportions at any size without the image warping
 // The "role" and "aria label" are there to identify the element's purpose as an image for accessibility purposes
 const Technologies = ({ _id, project_name, project_image }) => (
-    <div 
-      className="thumbnail"
-      role="img"
-      aria-label="Project Image">   
-      <img alt={project_name} src={project_image} />
+    <div className="tech">
       <p className="p_thumbnail">{project_name}</p>
       <span onClick={(e) => this.hanldeGetProjectClick(_id, e)} className="project_detail"></span>
     </div>

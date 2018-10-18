@@ -20,6 +20,8 @@ class Projects extends Component {
   componentDidMount() {
     this.getRecruiters();
     this.getProjects();
+    this.handleGetRecruiter()
+    console.log(this.props.user)
   };
 
   getRecruiters = () => {
@@ -33,12 +35,11 @@ class Projects extends Component {
 
   handleGetRecruiter = id => {
     API.getRecruiter(id)
-      .then((res) => {
-        console.log ("***********" + res.data) 
-        this.setState({ recruiter: res.data});
+      .then(response => {
+        this.setState({recruiter: response.data})
       })
-      .catch(err => console.log(err));
   };
+
 
   getProjects = () => {
     API.getProjects()
@@ -71,6 +72,8 @@ class Projects extends Component {
   // };
 
   render() {  
+    const {user} = this.props
+    console.log(this.state.recruiter)
     return (
       <Container>
         <Row>

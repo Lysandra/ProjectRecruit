@@ -181,7 +181,7 @@ router.route("/recruiters")
   console.log("this is working");
 
 router.route('/recruiters/:id')
-  .get(recruitersController.findById);
+  .get(recruitersController.findRecruiter);
   console.log("findByIdapiRoutes is working");
 
 router.route("/projects")

@@ -12,12 +12,13 @@ module.exports = {
       .catch(err => res.status(422).json(err));
   },
 
-  findById: function(req, res) {
+  findRecruiter: function(req, res) {
+    console.log(req.user._id)
     db.Recruiter
       // .findById({ where: { _id: res.user._id }})
-      .findById(req.params._id)
-      .then(dbRecruiter => res.json(dbRecruiter))
+      .findById(req.user._id)
+      .then(dbModel => res.json(dbModel))
       .catch(err => res.status(422).json(err));
-      console.log(req.params._id)
+      console.log('in the findbyid')
   },
 }; 
