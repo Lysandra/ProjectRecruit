@@ -5,6 +5,7 @@ import API from "../../utils/API";
 import Thumbnail from "./components/Thumbnail";
 import Technologies from "./components/Technologies";
 import Feedback from "./components/Feedback";
+import OverallRating from "./components/OverallRating";
 import { Col, Row, Container } from "reactstrap";
 import "./Recruiter.css";
 
@@ -75,14 +76,18 @@ class Recruiter extends Component {
                     <option value="4Star">Four</option>
                     <option value="5Star">Five</option>
                   </select>
-                </label><br />
-                <input type="submit" value="Submit" />
+                </label><br /><br />
+                
               </form>
               <Feedback />
-              <textarea name="body"></textarea>
+              <textarea name="body" rows="4" cols="50"></textarea>
+              <input type="submit" value="Submit" />
             </Col>
             <Col>
               <ColoredVerticalLine color="rgb(0, 188, 212)" />
+            </Col>
+            <Col>
+              <OverallRating />  
             </Col>
             </Row>
         </Container>
