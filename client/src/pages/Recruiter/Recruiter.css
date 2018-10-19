@@ -2,6 +2,26 @@
   text-align: "left";
 }
 
-form.label {
-  margin-left: 20px;
+form {
+  margin-bottom: 20px;
+  margin-left: 10px;
+  align-content: left;
+  
+}
+
+/* label {
+  align-items: right;
+  align-content: right;
+} */
+
+label {
+  width: 273px;
+  clear:left;
+  text-align:left;
+  padding-right:0px;
+}
+
+select, label {
+  float:right;
+  margin-left: 100px;
 }
