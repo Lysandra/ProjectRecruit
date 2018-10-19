@@ -55,7 +55,7 @@ class App extends Component {
               <Route exact path="/create/project" component={CreateProjectPage} />
               <Route exact path="/candidate" component={Candidate} />       
               <Route exact path="/projects" render={() => <Projects user={user}/>} />
-              <Route exact path="/recruiter" render={() => <Recruiter user={user}/>} />
+              <Route exact path="/recruiter" component={Recruiter}/>} />
               <Route component={NotFoundPage} />
             </Switch>
           </Fragment>
