@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import WelcomeRecruiter from "../../pages/Projects/components/WelcomeRecruiter";
 import ColoredLine from "../../components/ColoredLine";
 import ColoredVerticalLine from "../../components/ColoredVerticalLine";
 import API from "../../utils/API";
@@ -7,7 +6,7 @@ import Thumbnail from "./components/Thumbnail";
 import Technologies from "./components/Technologies";
 import Feedback from "./components/Feedback";
 import { Col, Row, Container } from "reactstrap";
-// import Technologies from './components/Technologies/Technologies';
+import "./Recruiter.css";
 
 class Recruiter extends Component {
 
