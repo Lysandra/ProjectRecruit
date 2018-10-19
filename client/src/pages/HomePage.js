@@ -47,7 +47,7 @@ class HomePage extends Component {
           <div>Hold on, looking for your stuff...</div>
         }
         {!user &&
-          <div>Hey! I don't recognize you! Register and log in using the link above</div>
+          <div> Welcome! Please Register and log in using the link above!</div>
         }
       </Fragment>
     );

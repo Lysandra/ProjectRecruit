@@ -27,7 +27,7 @@ const Navbar = (props) => {
   }
   return (
     <AppBar
-      title="PassportJS Example"
+      title="Project Recruit"
       showMenuIconButton={false}
       iconElementRight={user ?
         <LoginMenu username={username} onLogOut={handleLogOut} />
