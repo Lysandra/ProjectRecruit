@@ -1,67 +1,110 @@
-import React, { Component } from "react";
-import { Link } from "react-router-dom";
-import { Col, Row, Container, Jumbotron} from "reactstrap";
-
-//import API from "../../utils/API";
-import "./Projects.css";
-import Thumbnail from "../../components/Thumbnail";
-import projects from "./projects.json";
-
+import React, { Component } from 'react';
+import WelcomeRecruiter from "./components/WelcomeRecruiter";
+import ColoredLine from "../../components/ColoredLine";
+import Header from "./components/Header";
+import API from "../../utils/API";
+import Thumbnail from "./components/Thumbnail";
+import { Col, Row, Container } from "reactstrap";
+// import withUser from "../../services/withUser";
+// import projects from "../../projects.json";
 
 class Projects extends Component {
-  state = {
-    projects
-  };
-  // When this component mounts, grab the book with the _id of this.props.match.params.id
-  // e.g. localhost:3000/books/599dcb67f0f16317844583fc
-  // componentDidMount() {
-  //   API.getProjects(this.props.match.params.id)
-  //     .then(res => this.setState({ projects: res.data }))
-  //     .catch(err => console.log(err));
-  // }
 
-  // removeFriend = id => {
-  //   // Filter this.state.friends for friends with an id not equal to the id being removed
-  //   const friends = this.state.friends.filter(friend => friend.id !== id);
-  //   // Set this.state.friends equal to the new friends array
-  //   this.setState({ friends });
+  state = {
+    recruiters: [],
+    projects: [],
+  };
+
+  
+  componentDidMount() {
+    this.getRecruiters();
+    this.getProjects();
+  };
+
+  getRecruiters = () => {
+    API.getRecruiters()
+      .then((res) => {
+        console.log ("***********" + res.data) 
+        this.setState({ recruiters: res.data });
+      })
+      .catch(err => console.log(err));
+  };
+
+  getRecruiter = id => {
+    API.getRecruiter(id)
+      .then((res) => {
+        console.log ("***********" + res.data) 
+        this.setState({ recruiters: res.data});
+      })
+      .catch(err => console.log(err));
+  };
+
+  getProjects = () => {
+    API.getProjects()
+      .then((res) => {
+        console.log ("***********" + res.data) 
+        this.setState({ projects: res.data });
+      })
+      .catch(err => console.log(err));
+  };
+
+  getProject = id => {
+    API.getProject(id)
+      .then((res) => {
+        console.log ("***********" + res.data) 
+        this.setState({ projects: res.data});
+      })
+      .catch(err => console.log(err));
+  };
+
+  handleGetProjectClick = id => {
+    API.getProject(id).then(res => this.getProject(id));
+  };
+
+  // handleClick() {
+  //   console.log('this is the handle click this:', this);
+  //   const newProject = { ...project };
+  //   if (newProject._id === _id) {
+  //     return newProject
+  //   };
   // };
 
-  render() {
+  render() {  
     return (
-      <Container fluid>
+      <Container>
         <Row>
-          <Col md="6" sm="12">
-          <Jumbotron>
-              <h1>Trilogy Demo Day</h1>
-          </Jumbotron>     
+          <Col size="xl-6">
+            {this.state.recruiters.map(welcomerecruiter => (
+              <WelcomeRecruiter
+                key={welcomerecruiter._id}
+                _id={welcomerecruiter._id}
+                first_name={welcomerecruiter.first_name}
+                last_name={welcomerecruiter.last_name}
+              />
+            ))}
           </Col>
         </Row>
         <Row>
-          <Col md="6" sm="12">
-            <article>
-              <h2>UCF Coding Boot Camp</h2>
-              <h3>Melrose Center Orlando Public Library</h3>
-              <h3>101 East Central Blvd.</h3>
-              <h3>Orlando, FL 32801</h3>
-            </article>
+          <Col md="12">
+            <ColoredLine color="rgb(0, 188, 212)" />
           </Col>
         </Row>
         <Row>
-        {this.state.projects.map(project => (
-          <Thumbnail         
-            id={project.id}
-            key={project.id}
-            projectName={project.projectName}
-            projectImage={project.projectImage}
-          />
-        ))};            
+          <Col size="col-xl-6 col-xl-offset-3 col-centered"> 
+            {this.state.projects.map(thumbnail => (
+              <Thumbnail
+                handleGetProjectClick={this.handleGetProjectClick}
+                key={thumbnail._id}
+                _id={thumbnail._id}
+                project_name={thumbnail.project_name}
+                project_image={thumbnail.project_image}
+              />
+            ))}
+          </Col>
         </Row>
       </Container>
     );
   }
-}
+};
 
 export default Projects;
-
-{/* <Link to="/">← Back to Authors</Link> */}

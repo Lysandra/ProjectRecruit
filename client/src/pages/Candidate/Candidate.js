@@ -6,6 +6,7 @@ import ProfilePicture from "./components/ProfilePicture";
 import ProfileInfo from "./components/ProfileInfo";
 import ColoredLine from "./components/ColoredLine";
 import ProjectInfo from "./components/ProjectInfo";
+import API from "../../utils/API";
 
 
 import "./Candidate.css";
@@ -20,14 +21,39 @@ import { Col, Row, Container } from "reactstrap";
 
 class Candidate extends Component {
 
+  state = {
+    candidate: undefined,
+    project: undefined,
+  };
+
+  
+  componentDidMount() {
+    this.loadCandidate();
+  }
+
+  loadCandidate = () => {
+    API.getCandidate()
+      .then((res) => {
+        console.log ("***********" + res.data) 
+        if (res.data) {
+        this.setState({ candidate: res.data.candidate, project: res.data.project });
+        }
+        
+      })
+      .catch(err => console.log(err));
+
+  };
+
   render() {
+    const { candidate, project } =this.state;
+    if (!candidate) return null;
     return (
       <Container>
         <Row>
           <div className="top-wrapper">
             <ProjectName
-              image="https://savcoop.nuntanacloudservice.com/images/news_photo/I0000054.png"
-              name="Project Name"
+              projectImage="https://savcoop.nuntanacloudservice.com/images/news_photo/I0000054.png"
+              projectName="Project Name"
             />
             <LogOutBtn />
           </div>
@@ -35,17 +61,17 @@ class Candidate extends Component {
         <Row>
           <Col md={{size:3,offset:2}}>
             <ProfilePicture
-              image="https://lh3.googleusercontent.com/-z-h2bK8PjKY/AAAAAAAAAAI/AAAAAAAAYNg/iNq2qBxNnFw/s640-il/photo.jpg"     
-            />
+              profileImage={candidate.profileUrl}
+            />  
           </Col>
           <Col md="5">
             <ProfileInfo
-              firstName="Cristy"
-              lastName="Sillerico"
-              title="Full Stack Software Engineer"
-              email="cristysillerico@gmail.com"
-              phoneNumber="407-717-9056"
-              linkedIn="https://www.linkedin.com/feed/"
+              firstName={candidate.firstName}
+              lastName={candidate.lastName}
+              position={candidate.position}
+              email={candidate.email}
+              phone={candidate.phone}
+              linkedIn={candidate.linkedIn}
             />
           </Col>
         </Row>   
@@ -57,10 +83,10 @@ class Candidate extends Component {
         <Row>
           <Col md={{size:6,offset:3}}>
             <ProjectInfo
-              projectName="Project Name"             
-              summary="This is the summary of our project. We will go on and on on how great it is and how it will help you in the future."
-              projectLink="Project Link"
-              technologiesUsed="React | React Native | Node JS| MongoDB"
+            project_name={project.project_name}
+            project_image={project.project_image}
+            project_link={project.project_link}
+            technologies_used={project.used} 
             />
           </Col>
         </Row> 

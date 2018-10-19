@@ -27,17 +27,19 @@ class HomePage extends Component {
         });
       });
   }
+  
   render() {
     const { user } = this.props; // get the user prop from props
     const { stuff } = this.state; // get stuff from state
+    console.log(user)
 
     return (
       <Fragment>
         {user && stuff &&
           <div>
-            Welcome back, {user.username}!
+            Welcome back, {user.email}!
           <List>
-           {stuff.map((s, i) => <ListItem key={i} primaryText={s} />)}
+            {/* {stuff.map((s, i) => <ListItem key={i} primaryText={s} />)} */}
           </List>
           </div>
         }
@@ -45,7 +47,7 @@ class HomePage extends Component {
           <div>Hold on, looking for your stuff...</div>
         }
         {!user &&
-          <div>Hey! I don't recognize you! Register and log in using the link above</div>
+          <div> Welcome! Please Register and log in using the link above!</div>
         }
       </Fragment>
     );
