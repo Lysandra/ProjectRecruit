@@ -5,6 +5,7 @@ import Header from "./components/Header";
 import API from "../../utils/API";
 import Thumbnail from "./components/Thumbnail";
 import { Col, Row, Container } from "reactstrap";
+import "./Projects.css";
 // import withUser from "../../services/withUser";
 // import projects from "../../projects.json";
 
