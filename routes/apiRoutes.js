@@ -202,8 +202,8 @@ router.route("/recruiters")
   .get(recruitersController.findAll);
   console.log("this is working");
 
-router.route('/recruiters/id')
-  .get(recruitersController.findById);
+router.route('/recruiters/:id')
+  .get(recruitersController.findRecruiter);
   console.log("findByIdapiRoutes is working");
 
 router.route("/projects")
