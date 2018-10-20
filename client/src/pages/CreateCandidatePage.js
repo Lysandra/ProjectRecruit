@@ -69,6 +69,7 @@ class CreateAccountPage extends Component {
     const { error } = this.state;
 
     return (
+      
       <Grid fluid>
         <Row>
           <Col xs={6} xsOffset={3}>
