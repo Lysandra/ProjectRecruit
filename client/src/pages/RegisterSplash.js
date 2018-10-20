@@ -1,22 +1,38 @@
 import React, { Component } from 'react';
-import { Grid, Row, Col } from 'react-flexbox-grid';
+import { Grid } from 'react-flexbox-grid';
 import { Link } from 'react-router-dom';
+
 
 class RegisterSplash extends Component {
   render(){
     return (
     <div>
-      <p>
+      <Grid className="grid">
         <Link to="/create/recruiter">
-        I'm a Recruiter
+            
+              <img
+                 src="https://pbs.twimg.com/profile_images/978374211801665538/Scj1ltjx_400x400.jpg"
+                 alt="trilogy"
+                 className="trilogy-image"
+          
+              />
+             <p>I'm a Recruiter</p>
         </Link>
-      </p>
-      <p>
-        <Link to="/create/candidate">
-        I'm a Candidate
-        </Link>
-      </p>
-    </div>
+      
+
+          <Link to="/create/candidate">
+               
+            <img
+              src="https://pbs.twimg.com/profile_images/978374211801665538/Scj1ltjx_400x400.jpg"
+              alt="trilogy"
+              className="trilogy-image"
+          
+              />    
+                <p>I'm a Candidate</p>
+            </Link>
+            
+      </Grid>
+     </div>
     )
   }
 }
