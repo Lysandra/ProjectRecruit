@@ -2,6 +2,9 @@ import axios from 'axios';
 import React, { Component, Fragment } from 'react';
 import { List, ListItem } from 'material-ui/List';
 import { withUser } from '../services/withUser';
+import { Link } from 'react-router-dom';
+import { Col, Row, Container } from "reactstrap";
+import LinktoProjects from "../components/LinktoProjects"
 
 class HomePage extends Component {
   state = {
@@ -34,13 +37,21 @@ class HomePage extends Component {
     console.log(user)
 
     return (
+      <Container>
       <Fragment>
         {user && stuff &&
           <div>
-            Welcome back, {user.email}!
-          <List>
-            {/* {stuff.map((s, i) => <ListItem key={i} primaryText={s} />)} */}
-          </List>
+            Welcome {user.email}!
+            <Row>
+            <Col md={{size:12}}>
+                <LinktoProjects></LinktoProjects>
+              </Col>
+            </Row>
+            <Row>
+              <Col>
+              <a href="https://www.trilogyed.com/"><img src="../img" alt="trilogy" className="logo" /></a>
+              </Col>
+            </Row>
           </div>
         }
         {user && !stuff &&
@@ -49,7 +60,9 @@ class HomePage extends Component {
         {!user &&
           <div> Welcome! Please Register and log in using the link above!</div>
         }
-      </Fragment>
+      </Fragment>   
+        
+      </Container>
     );
   }
 }
