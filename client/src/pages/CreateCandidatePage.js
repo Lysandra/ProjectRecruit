@@ -3,6 +3,7 @@ import React, { Component } from 'react';
 import { Grid, Row, Col } from 'react-flexbox-grid';
 import TextField from 'material-ui/TextField';
 import RaisedButton from 'material-ui/RaisedButton';
+import CreateProjectPage from "./CreateProjectPage";
 
 class CreateAccountPage extends Component {
   state = {
@@ -14,19 +15,22 @@ class CreateAccountPage extends Component {
     phone: null,
     linkedIn: null,
     profileUrl: null,
-    error: null
+    error: null,
+    project_name: null,
+    project_image: null,
+    project_link: null,
+    summary: null,
+    technologies_used: null,
+    partOneComplete: false
   }
   handleInputChanged = (event) => {
     this.setState({
       [event.target.name]: event.target.value
     });
   }
-  handleLogin = (event) => {
-    event.preventDefault();
-
-    const { password, firstName, lastName, position, phone, email, linkedIn, profileUrl } = this.state;
-    const { history } = this.props;
-
+  completePartOne = () => {
+    const { email, password} =this.state
+    console.log("click")
     // clear any previous errors so we don't confuse the user
     this.setState({
       error: null
@@ -41,6 +45,15 @@ class CreateAccountPage extends Component {
       });
       return;
     }
+    this.setState({partOneComplete:true})
+  }
+  handleLogin = (event) => {
+    event.preventDefault();
+
+    const { password, firstName, lastName, position, phone, email, linkedIn, profileUrl, project_name, project_image, project_link, summary, technologies_used } = this.state;
+    const { history } = this.props;
+
+    
 
     // post an auth request
     axios.post('/api/users/candidate', {
@@ -51,12 +64,17 @@ class CreateAccountPage extends Component {
       position,
       phone,
       linkedIn,
-      profileUrl
+      profileUrl,
+      project_name,
+      project_image,
+      project_link,
+      summary,
+      technologies_used
 
     })
       .then(user => {
         // if the response is successful, make them log in
-        history.push('/create/project');
+        history.push('/login');
       })
       // .catch(err => {
 
@@ -66,14 +84,26 @@ class CreateAccountPage extends Component {
       // });
   }
   render() {
-    const { error } = this.state;
-
+    const { error, partOneComplete, project_name, project_image, project_link, summary, technologies_used } = this.state;
+      if (partOneComplete){
+        return (
+          <CreateProjectPage
+            onSubmit={this.handleLogin}
+            handleInputChanged={this.handleInputChanged}
+            project_name={project_name}
+            project_image={project_image}
+            project_link={project_link}
+            summary={summary}
+            technologies_used={technologies_used}
+          />
+        )
+      }
     return (
       
       <Grid fluid>
         <Row>
           <Col xs={6} xsOffset={3}>
-            <form onSubmit={this.handleLogin}>
+            <form>
               <h1>Create Account</h1>
               {error &&
                 <div>
@@ -155,7 +185,7 @@ class CreateAccountPage extends Component {
               </div>
           
               <div>
-                <RaisedButton primary type="submit">
+                <RaisedButton primary onClick={this.completePartOne}>
                   Create Account
                 </RaisedButton>
               </div>

@@ -48,25 +48,6 @@ router.route('/auth')
       message: 'You have been logged out.'
     });
   });
-
-router.route("/users/project")
-  .post((req, res, next) => {
-    db.Project.create({
-      project_name: req.body.project_name,
-      project_image: req.body.project_image,
-      project_link: req.body.project_link,
-      summary: req.body.summary,
-      technologies_used: req.body.technologies_used,
-      userId: req.user._id
-    }).then(() => {
-      return res.status(200).json({
-        message: 'Project Created!.'
-      })
-    }).catch(err => {
-      console.log(err)
-    })
-   
-  })
   
 router.route('/users/candidate')
   .get((req, res, next) => {
@@ -115,10 +96,22 @@ router.route('/users/candidate')
           userId: id
         })
           .then(candidate => {
+            db.Project.create({
+              project_name: req.body.project_name,
+              project_image: req.body.project_image,
+              project_link: req.body.project_link,
+              summary: req.body.summary,
+              technologies_used: req.body.technologies_used,
+              userId: id
+            }).then(() => {
+              res.json({
+                id, email
+              });
+            }).catch(err => {
+              console.log(err)
+            })
             console.log(candidate)
-            res.json({
-              id, email
-            });
+            
           }).catch(err => {
             console.log(err)
           })
