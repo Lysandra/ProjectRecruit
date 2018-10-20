@@ -25,3 +25,7 @@ select, label {
   float:right;
   margin-left: 100px;
 }
+
+.thumbnail {
+  display: inline-block;
+}
