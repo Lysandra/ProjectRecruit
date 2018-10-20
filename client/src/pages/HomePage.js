@@ -2,7 +2,8 @@ import axios from 'axios';
 import React, { Component, Fragment } from 'react';
 import { List } from 'material-ui/List';
 import { withUser } from '../services/withUser';
-import {Cell, Grid} from 'react-mdl'
+import {Cell, Grid} from 'react-mdl';
+import ReactMDL from 'react-mdl';
 import { Link } from 'react-router-dom';
 import { Col, Row, Container } from "reactstrap";
 import LinktoProjects from "../components/LinktoProjects"
