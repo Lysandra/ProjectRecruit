@@ -49,16 +49,16 @@ class HomePage extends Component {
           <Grid className="landing-grid">
           <Cell col={12}>
               <img
-                 src="https://pbs.twimg.com/profile_images/978374211801665538/Scj1ltjx_400x400.jpg"
-                 alt="trilogy"
-                 className="trilogy-image"
+                  src="https://pbs.twimg.com/profile_images/978374211801665538/Scj1ltjx_400x400.jpg"
+                  alt="trilogy"
+                  className="trilogy-image"
           
               />
 
               <div className="banner-text">
-               <h3>Welcome to Project Recruit</h3>
+                <h3>Welcome to Project Recruit</h3>
 
-               <hr/>
+                <hr/>
                 <p> Please Register and Log in Using The Link Above </p>
                 <p> Follow Us on Social Media </p>
 
