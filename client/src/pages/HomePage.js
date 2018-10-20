@@ -113,6 +113,7 @@ class HomePage extends Component {
           <div> Welcome! Please Register and log in using the link above!</div>
 
         } */}
+
       </Fragment>
         
       </Container>
