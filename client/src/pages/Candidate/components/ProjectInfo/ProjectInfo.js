@@ -4,12 +4,12 @@ import "./ProjectInfo.css";
 const ProjectInfo = props => {
   return (
     <div className="project-info-wrap">
-      <div className="project-wrapper">
-        <p>{props.projectName}</p>
-      </div>
-      <p>{props.summary}</p>
-      <p>{props.projectLink}</p>
-      <p>{props.technologiesUsed}</p>
+      
+      <div>{props.project_name}</div>
+      <div>{props.project_image}</div>
+      <div>{props.summary}</div>
+      <div>{props.project_link}</div>
+      <div>{props.technologies_used}</div>
     </div>
   )
 }

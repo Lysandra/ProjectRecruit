@@ -56,7 +56,7 @@ class CreateAccountPage extends Component {
     })
       .then(user => {
         // if the response is successful, make them log in
-        history.push('/login');
+        history.push('/create/project');
       })
       // .catch(err => {
 
@@ -69,6 +69,7 @@ class CreateAccountPage extends Component {
     const { error } = this.state;
 
     return (
+      
       <Grid fluid>
         <Row>
           <Col xs={6} xsOffset={3}>
@@ -152,6 +153,7 @@ class CreateAccountPage extends Component {
                   onChange={this.handleInputChanged}
                 />
               </div>
+          
               <div>
                 <RaisedButton primary type="submit">
                   Create Account
