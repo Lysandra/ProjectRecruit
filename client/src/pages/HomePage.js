@@ -114,9 +114,6 @@ class HomePage extends Component {
 
         } */}
       </Fragment>
-
-        }
-      </Fragment>   
         
       </Container>
 
