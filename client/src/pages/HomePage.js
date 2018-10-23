@@ -88,7 +88,7 @@ class HomePage extends Component {
         {user && stuff &&
           <div>
 
-            Welcome back, {user.email}!
+            {/* Welcome back, {user.email}! */}
             <List>
               {/* {stuff.map((s, i) => <ListItem key={i} primaryText={s} />)} */}
             </List>
