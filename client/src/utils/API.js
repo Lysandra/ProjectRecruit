@@ -6,7 +6,7 @@ export default {
     return axios.get("/api/recruiters");
   },
 
-  // //Get recruiter by ID
+  //Get recruiter by ID
   // getRecruiter: function(id) {
   //   return axios.get(`/api/recruiters/${id}`);
   // },
