@@ -6,10 +6,10 @@ export default {
     return axios.get("/api/recruiters");
   },
 
-  //Get recruiter by ID
-  getRecruiter: function(id) {
-    return axios.get(`/api/recruiters/${id}`);
-  },
+  // //Get recruiter by ID
+  // getRecruiter: function(id) {
+  //   return axios.get(`/api/recruiters/${id}`);
+  // },
 
   // Get all projects
   getProjects: function() {
