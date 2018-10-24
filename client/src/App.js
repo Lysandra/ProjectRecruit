@@ -15,7 +15,7 @@ import LoginPage from './pages/LoginPage';
 import Candidate from './pages/Candidate';
 import NotFoundPage from './pages/NotFoundPage';
 import Projects from './pages/Projects';
-import Recruiter from './pages/Recruiter/Recruiter';
+import Recruiter from './pages/Recruiter';
 import RegisterSplash from './pages/RegisterSplash';
 
 class App extends Component {
